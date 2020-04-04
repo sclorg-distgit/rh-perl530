@@ -1,0 +1,25 @@
+# Perl bootstrap for rebuild of Perl and all related packages
+%perl_bootstrap 1
+
+# New make macros
+%_make_output_sync %(! %{__make} --version -O >/dev/null 2>&1 || echo -O)
+%make_build %{__make} %{_make_output_sync} %{?_smp_mflags}
+%make_install %{__make} install DESTDIR=%{?buildroot} INSTALL="%{__install} -p"
+
+%_with_perl_enables_groff 1
+%_without_perl_enables_syslog_test 1
+%_with_perl_enables_systemtap 1
+%_without_perl_enables_tcsh 1
+
+# scl_macro_prefix - use for updating macro name, %%scl contains dash which is
+# not allowed in macro name
+%scl_package_override() %{expand: \
+%global perl_small 1 \
+%global __perl LD_LIBRARY_PATH="@LIBDIR@${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}" %_scl_root/usr/bin/perl \
+%global __perl_requires /usr/lib/rpm/perl.req.@SCL@ \
+%global __perl_provides /usr/lib/rpm/perl.prov.@SCL@ \
+%global __perllib_requires /usr/lib/rpm/perl.req.@SCL@ \
+%global __perllib_provides /usr/lib/rpm/perl.prov.@SCL@ \
+%global perl_default_filter %{?@MACRO@perl_default_filter} \
+%global scl_macro_prefix @MACRO@ \
+}

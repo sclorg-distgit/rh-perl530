@@ -1,0 +1,19 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+my %variables = @ARGV;
+my %replacements;
+while (my ($key, $value) = each %variables) {
+	$key = qr{$key};
+	$value =~ s/'/\\[aq]/g;
+	$value =~ s/-/\\N'45'/g;
+	$replacements{$key} = $value;
+}
+
+while(<STDIN>) {
+	while (my ($source, $target) = each %replacements) {
+		$_ =~ s/$source/$target/g;
+	}
+	print $_;
+}

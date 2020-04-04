@@ -1,0 +1,48 @@
+.TH %{scl_name} "7" "" "%{scl_name} %{version} Software Collection" "User Commands"
+.SH NAME
+%{scl_name} \- manual page for %{scl_name} %{version} Software Collection
+.SH SYNOPSIS
+.B scl
+\fIenable %{scl_name} \[aq]perl\[aq]\fR
+.SH DESCRIPTION
+Package %{scl_name} provides Perl programming language delivered as a Software
+Collection. For more information about Software Collections,
+see the \fIscl\fR(1) man page. By installing the %{scl_name} collection,
+you will get the minimum working set of packages to have a working Perl
+programming language.
+.PP
+Software Collections allow you to build and execute applications
+which are not located in the filesystem root hierarchy,
+but are stored in an alternative location, which is
+\fI%{_scl_root}\fR in case of the %{scl_name} collection.
+.PP
+Perl is a high\-level programming language with roots in C, sed, awk and shell
+scripting. Perl is good at handling processes and files, and is especially
+good at handling text. Perl's hallmarks are practicality and efficiency.
+While it is used to do a lot of different things, Perl's most common
+applications are system administration utilities and web programming. A large
+proportion of the CGI scripts on the web are written in Perl.
+.PP
+When you want to work with the %{scl_name} collection, use the \fBscl\fR
+utility (see the \fIscl\fR(1) man page for usage) to enable the scl
+environment.
+.SH EXAMPLES
+scl enable %{scl_name} \[aq]\fIcommand\fR \fB\-\-arg\fR\[aq]
+.IP
+Run a specific \fIcommand\fR with the argument \fB\-\-arg\fR within the
+%{scl_name} software collections environment.
+.PP
+scl enable %{scl_name} \[aq]perl \fIprogram.pl\fR\[aq]
+.IP
+Execute \fIprogram.pl\fR by Perl from the %{scl_name} software collection.
+.PP
+scl enable %{scl_name} bash
+.IP
+Run an interactive shell with the %{scl_name} software collection enabled.
+.PP
+scl enable %{scl_name} \[aq]man perl\[aq]
+.IP
+Show man pages for the perl command, which is a part of the
+%{scl_name} software collection.
+.SH "REPORTING BUGS"
+Report bugs to <http://bugzilla.redhat.com>.

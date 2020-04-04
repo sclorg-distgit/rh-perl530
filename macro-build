@@ -1,5 +1,5 @@
 # Perl bootstrap for rebuild of Perl and all related packages
-#%%perl_bootstrap 1
+%perl_bootstrap 1
 
 # New make macros
 %_make_output_sync %(! %{__make} --version -O >/dev/null 2>&1 || echo -O)

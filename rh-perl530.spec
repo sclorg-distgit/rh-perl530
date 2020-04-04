@@ -22,7 +22,7 @@
 Summary: Package that installs %scl
 Name:    %scl_name
 Version: 3.5
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: GPLv2+
 Source0: macro-build
 Source1: README
@@ -123,6 +123,9 @@ install -m 644 %{scl_name}.7 %{buildroot}%{_mandir}/man7/%{scl_name}.7
 %{_root_sysconfdir}/rpm/macros.%{scl_name_base}-scldevel
 
 %changelog
+* Tue Jan 07 2020 Jitka Plesnikova <jplesnik@redhat.com> - 3.5-2
+- Disable perl_bootstrap macro
+
 * Thu Dec 19 2019 Jitka Plesnikova <jplesnik@redhat.com> - 3.5-1
 - Initial version for SCL 3.5
 - Enable perl_bootstrap macro
